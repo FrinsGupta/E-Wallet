@@ -5,6 +5,7 @@ import styles from "./page.module.css";
 export default function Home() {
   return (
     <div className={styles.page}>
+      
       <main className={styles.main}>
         <Image
           className={styles.logo}
@@ -16,6 +17,7 @@ export default function Home() {
         />
         <ol>
           <li>
+          Hi I am prince
             Get started by editing <code>app/page.tsx</code>
           </li>
           <li>Save and see your changes instantly.</li>
@@ -46,7 +48,7 @@ export default function Home() {
             Read our docs
           </a>
         </div>
-        <Button appName="docs" className={styles.secondary}>
+        <Button appName="web" className={styles.secondary}>
           Open alert
         </Button>
       </main>

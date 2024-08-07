@@ -16,6 +16,7 @@ export default function Home() {
         />
         <ol>
           <li>
+            Hi I am prince
             Get started by editing <code>app/page.tsx</code>
           </li>
           <li>Save and see your changes instantly.</li>
@@ -46,7 +47,7 @@ export default function Home() {
             Read our docs
           </a>
         </div>
-        <Button appName="web" className={styles.secondary}>
+        <Button appName="docs" className={styles.secondary}>
           Open alert
         </Button>
       </main>
