@@ -14,9 +14,48 @@ datasource db {
 }
 
 model User {
-  id       String @id @default(uuid())
-  email    String @unique
-  name     String
-  number   String @unique
-  password String
+  id                String              @id @default(uuid())
+  email             String              @unique
+  name              String
+  number            String              @unique
+  password          String
+  OnRampTransaction OnRampTransaction[]
+  Balance           Balance[]
+  sentTransfers     p2pTransfer[]       @relation(name: "FromUserRelation")
+  receivedTransfers p2pTransfer[]       @relation(name: "ToUserRelation")
+}
+
+model OnRampTransaction {
+  id        String       @id @default(uuid())
+  status    OnRampStatus
+  token     String       @unique
+  provider  String
+  amount    Int
+  startTime DateTime
+  userId    String
+  user      User         @relation(fields: [userId], references: [id])
+}
+
+model Balance {
+  id     String @id @default(uuid())
+  userId String @unique
+  amount Int
+  locked Int
+  user   User   @relation(fields: [userId], references: [id])
+}
+
+model p2pTransfer {
+  id         String   @id @default(uuid())
+  amount     Int
+  timestamp  DateTime
+  fromUserId String
+  fromUser   User     @relation(name: "FromUserRelation", fields: [fromUserId], references: [id])
+  toUserId   String
+  toUser     User     @relation(name: "ToUserRelation", fields: [toUserId], references: [id])
+}
+
+enum OnRampStatus {
+  Success
+  Failure
+  Processing
 }

@@ -5,6 +5,9 @@
   "exports": {
     "./button": "./src/button.tsx",
     "./card": "./src/card.tsx",
+    "./Center": "./src/Center.tsx",
+    "./Select": "./src/Select.tsx",
+    "./TextInput": "./src/TextInput.tsx",
     "./code": "./src/code.tsx"
   },
   "scripts": {
