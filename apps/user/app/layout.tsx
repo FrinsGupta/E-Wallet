@@ -2,9 +2,6 @@ import "./globals.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { Providers } from "../providers";
-import AppBar from "./components/AppBar";
-import Sidebar from "./components/SideBar";
-
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -22,8 +19,9 @@ export default function RootLayout({
     <html lang="en">
       <Providers>
         <body className={inter.className}>
-        <AppBar/>
+          <div className="min-w-screen min-h-screen bg-[#ebe6e6]">
           {children}
+          </div>
           </body>
       </Providers>
     </html>

@@ -8,6 +8,7 @@
     "./Center": "./src/Center.tsx",
     "./Select": "./src/Select.tsx",
     "./TextInput": "./src/TextInput.tsx",
+    "./Loader": "./src/Loader.tsx",
     "./code": "./src/code.tsx"
   },
   "scripts": {

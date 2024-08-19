@@ -1,3 +1,4 @@
+"use server"
 import { getServerSession } from "next-auth"
 import { NEXT_AUTH } from "../route"
 import db from '@repo/db/client'
@@ -24,7 +25,7 @@ export const p2pTransfer = async(to: string, amount: number) => {
     }
 
     await db.$transaction(async(tx)=>{
-        await tx.$queryRaw`SELECT * FROM "Balance" WHERE "userId" = ${Number(from)} FOR UPDATE`;
+        await tx.$queryRaw`SELECT * FROM "Balance" WHERE "userId" = ${from} FOR UPDATE`;
         const fromBalance = await tx.balance.findFirst({
             where: {
                 userId: from

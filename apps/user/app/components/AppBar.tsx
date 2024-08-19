@@ -10,21 +10,20 @@ const AppBar = () => {
   const router = useRouter();
 
   return (
-    <div className="flex justify-between border-b px-4">
+    <div className="flex justify-between border-b border-gray-300 px-4 py-2">
          <div className=" ml-4 text-2xl font-semibold flex flex-col justify-center">
             PayTM
         </div>
       <div className="flex flex-col justify-center pt-2">
-        <Button onClick={async()=>{
+        <Button btname={user ? "Logout" : "Login"} onClick={async()=>{
             if (user) {
               await signOut(); 
                router.push('/api/auth/signin')
             } else {
                 signIn()
             }
-        }}>
-          {user ? "Logout" : "Login"}
-        </Button>
+        }}/>
+          
       </div>
     </div>
   );

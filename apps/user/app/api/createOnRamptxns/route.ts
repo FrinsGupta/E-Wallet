@@ -1,18 +1,22 @@
 "use server"
 import { getServerSession } from "next-auth";
-import { NEXT_AUTH } from "../route";
+import { NEXT_AUTH } from "../../lib/route";
 import db from '@repo/db/client'
+import { NextRequest } from "next/server";
 
-export const createOnrampTxns = async (provider: string, amount: number) => {
-    // Ideally the token should come from the banking provider (hdfc/axis)
+export const POST = async (req:NextRequest) => {
+    const body = await req.json()
+    const provider = body.provider
+    const amount = body.amount
+
+  // Ideally the token should come from the banking provider (hdfc/axis)
   const session = await getServerSession(NEXT_AUTH);
+
   if (!session?.user || !session.user?.id) {
     console.log("Unauthorized request");
-    
-    return {
-        msg: "Unauthorized request"
-    }
+    return Response.json({msg:"Unauthorized User"})
   }
+
   try{
       const token = (Math.random()*1000).toString();
       // console.log(amount);
@@ -29,15 +33,10 @@ export const createOnrampTxns = async (provider: string, amount: number) => {
       })
       console.log(response);
       
-      return {
-        msg: "Done"
-      }
+      return Response.json({response})
   }catch(err){
     console.log(err);
-    return {
-        msg:"Failed creating onRamptxn"
-    }
-    
+    return Response.json({msg:"Error cannot create onRamptxns"})
   }
 
-};
+}

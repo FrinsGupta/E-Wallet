@@ -4,13 +4,13 @@ import { NEXT_AUTH } from "./lib/route";
 
 export default async function  Home () {
   const session = await getServerSession(NEXT_AUTH)
-  const user = session.user
+  const user = session?.user
   
     if (user) {
-      redirect('/dashboard')
+      redirect('/transfer')
     }
     else{
-      redirect('/api/auth/signin')
+      redirect('/api/auth/login')
     }
   
 }

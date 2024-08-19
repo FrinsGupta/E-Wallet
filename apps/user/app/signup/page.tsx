@@ -6,6 +6,7 @@ import Heading from "../components/Heading";
 import InputBox from "../components/InputBox";
 import Button from "../components/Button";
 import BottomWarning from "../components/BottomWarning";
+import { redirect, useRouter } from "next/navigation";
 
 
 export default function () {
@@ -14,6 +15,8 @@ export default function () {
     const [password, setPassword] = useState("");
     const [number, setNumber] = useState("");
     const BackendUrl = process.env.NEXTAUTH_URL
+
+    const router = useRouter();
     
     return (
         <div className=" flex justify-center items-center h-screen bg-gray-300">
@@ -51,6 +54,7 @@ export default function () {
                             password : password
                          })
                          console.log(response);
+                         router.push('/api/auth/signin')
                          
                     } catch (error) {
                         console.log(error);
