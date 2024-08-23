@@ -1,6 +1,6 @@
 import { getServerSession } from "next-auth";
 import { NextRequest } from "next/server";
-import { NEXT_AUTH } from "../../lib/route";
+import { NEXT_AUTH } from "../../lib/auth";
 import db from "@repo/db/client"
 
 export const POST = async (req: NextRequest) => {

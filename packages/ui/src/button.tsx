@@ -1,7 +1,5 @@
 "use client";
 
-import { ReactNode } from "react";
-
 interface ButtonProps {
   btname: string;
   onClick: () => void;

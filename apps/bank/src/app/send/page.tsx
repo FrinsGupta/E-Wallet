@@ -4,7 +4,7 @@ import axios from "axios";
 import { useSearchParams } from "next/navigation";
 // import Loader from '@repo/ui/Loader'
 
-const page = () => {
+export default function Send() {
   const searchParams = useSearchParams();
   const token = searchParams.get("token");
   const user_identifier = searchParams.get("user_identifier");
@@ -52,7 +52,6 @@ const page = () => {
   );
 };
 
-export default page;
 
 const Loader = () => {
   return (

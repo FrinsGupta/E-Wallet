@@ -1,6 +1,6 @@
 "use server"
 import { getServerSession } from "next-auth";
-import { NEXT_AUTH } from "../../lib/route";
+import { NEXT_AUTH } from "../../lib/auth";
 import db from '@repo/db/client'
 import { NextRequest } from "next/server";
 

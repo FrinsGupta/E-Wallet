@@ -1,6 +1,6 @@
 "use server"
 import { getServerSession } from "next-auth";
-import { NEXT_AUTH } from "../route";
+import { NEXT_AUTH } from "../auth";
 import db from '@repo/db/client'
 
 export const createOnrampTxns = async (provider: string, amount: number) => {

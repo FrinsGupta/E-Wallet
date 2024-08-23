@@ -1,5 +1,5 @@
 import { getServerSession } from "next-auth"
-import { NEXT_AUTH } from "../../lib/route";
+import { NEXT_AUTH } from "../../lib/auth";
 
 export const GET =async () => {
    const session = await getServerSession(NEXT_AUTH);
