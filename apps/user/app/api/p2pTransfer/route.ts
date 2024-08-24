@@ -10,6 +10,7 @@ export const POST = async (req: NextRequest) => {
   const from = session?.user?.id
   const body = await req.json()
   const to = body.number
+  
   const amount = parseInt(body.amount)
 
   if (!from) {
