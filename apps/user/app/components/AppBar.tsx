@@ -4,6 +4,8 @@ import { signIn, signOut, useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import React from "react";
 
+
+
 const AppBar = () => {
   const session = useSession();
   const user = session?.data?.user;
