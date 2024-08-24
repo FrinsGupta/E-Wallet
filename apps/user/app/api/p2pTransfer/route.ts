@@ -2,6 +2,7 @@ import { getServerSession } from "next-auth";
 import { NextRequest } from "next/server";
 import { NEXT_AUTH } from "../../lib/auth";
 import db from "@repo/db/client"
+import  {Prisma}  from '@prisma/client';
 
 export const POST = async (req: NextRequest) => {
     try {
@@ -25,7 +26,7 @@ if (!toUser) {
     return Response.json({msg: "User not fournd"}) 
 }
 
-await db.$transaction(async(tx)=>{
+await db.$transaction(async(tx: Prisma.TransactionClient)=>{
     await tx.$queryRaw`SELECT * FROM "Balance" WHERE "userId" = ${from} FOR UPDATE`;
     const fromBalance = await tx.balance.findFirst({
         where: {
