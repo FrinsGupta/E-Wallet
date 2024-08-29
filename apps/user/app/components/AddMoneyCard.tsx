@@ -7,15 +7,6 @@ import { useState } from "react";
 import  TextInput  from "@repo/ui/TextInput";
 import axios from "axios";
 
-// const SUPPORTED_BANKS = [{
-//     name: "HDFC Bank",
-//     redirectUrl: "http://localhost:3002"
-// }, {
-//     name: "Axis Bank",
-//     redirectUrl: "http://localhost:3002"
-// }];
-
-
 const AddMoneyCard = () => {
     const SUPPORTED_BANKS = [{
         name: "HDFC Bank",
@@ -66,7 +57,6 @@ const AddMoneyCard = () => {
                 const user_identifier = await response.data.response.userId
                 const amnt = await response.data.response.amount
                 console.log(token,user_identifier,amnt);
-                
                 
                 window.location.href =  `${redirectUrl}/send?token=${token}&user_identifier=${user_identifier}&amount=${amount}&bank=${provider}` || "";
                 setLoading(false)
