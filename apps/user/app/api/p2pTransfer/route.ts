@@ -3,6 +3,7 @@ import { NextRequest } from "next/server";
 import { NEXT_AUTH } from "../../lib/auth";
 import db from "@repo/db/client"
 import  {Prisma}  from '@prisma/client';
+import { log } from "console";
 
 export const POST = async (req: NextRequest) => {
     try {
@@ -77,4 +78,24 @@ return Response.json({msg:"Success"})
         
     }
   
+}
+
+export const GET = async () => {
+    try {
+        const session = await getServerSession(NEXT_AUTH);
+    const userId = await session?.user?.id;
+
+    const userTxns = await db.p2pTransfer.findMany({
+        where: {
+            fromUserId: userId
+        },
+        
+    })
+
+    return Response.json({userTxns})
+    } catch (error) {
+        console.log(error);
+        return Response.json(error)
+    }
+    
 }

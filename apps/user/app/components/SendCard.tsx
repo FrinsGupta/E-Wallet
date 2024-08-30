@@ -12,14 +12,14 @@ const SendCard = () => {
     const [amount, setAmount] = useState("");
     const [loading,setLoading] = useState(false)
 
-    return <div className="h-[90vh]">
+    return <div className="w-1/2 flex items-center justify-center">
         <Center>
         <div className={`${loading?'block':'hidden'} absolute top-0 left-0 w-full h-full bg-gray-500 opacity-85 flex items-center justify-center`}>
       <Loader/>
       </div>
             <Card title="Send">
                 <div className="min-w-72 pt-2">
-                    <TextInput placeholder={"Number"} label="Number" onChange={(value) => {
+                    <TextInput placeholder={"Number"} label="To Number" onChange={(value) => {
                         setNumber(value)
                     }} />
                     <TextInput placeholder={"Amount"} label="Amount" onChange={(value) => {

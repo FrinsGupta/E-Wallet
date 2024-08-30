@@ -8,6 +8,9 @@ import OnRampTransactions from "../../components/OnRampTransactions";
 
 const getBalance = async () => {
   const session = await getServerSession(NEXT_AUTH);
+  if (!session || !session?.user) {
+    throw new Error("User not authenticated");
+  }
   const balance = await prisma.balance.findFirst({
     where: {
       userId: session?.user?.id,
@@ -28,6 +31,7 @@ const getOnRampTransactions = async () => {
   });
 
   return txns.map((t: any) => ({
+    id: t.id,
     time: t.startTime,
     amount: t.amount,
     status: t.status,

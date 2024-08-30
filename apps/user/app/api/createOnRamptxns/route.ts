@@ -31,7 +31,7 @@ export const POST = async (req:NextRequest) => {
             amount: amount 
         }
       })
-      console.log(response);
+      // console.log(response);
       
       return Response.json({response})
   }catch(err){

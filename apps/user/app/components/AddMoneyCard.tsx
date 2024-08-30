@@ -9,9 +9,11 @@ import axios from "axios";
 
 const AddMoneyCard = () => {
     const SUPPORTED_BANKS = [{
+        id:1,
         name: "HDFC Bank",
         redirectUrl: "http://localhost:3002"
     }, {
+        id:2,
         name: "Axis Bank",
         redirectUrl: "http://localhost:3002"
     }];
@@ -38,8 +40,8 @@ const AddMoneyCard = () => {
         <Select onSelect={(value) => {
             setRedirectUrl(SUPPORTED_BANKS.find(x => x.name === value)?.redirectUrl || "")
             setProvider(SUPPORTED_BANKS.find(x => x.name === value)?.name || "")
-        }} options={SUPPORTED_BANKS.map(x => ({
-            key: x.name,
+        }} options={SUPPORTED_BANKS.map((x) => ({
+            key: x.id,
             value: x.name
         }))} />
         <div className="flex justify-center pt-4">
@@ -51,12 +53,12 @@ const AddMoneyCard = () => {
                     provider,
                     amount
                 })
-                console.log(response);
+                // console.log(response);
 
                 const token = await response.data.response.token
                 const user_identifier = await response.data.response.userId
                 const amnt = await response.data.response.amount
-                console.log(token,user_identifier,amnt);
+                // console.log(token,user_identifier,amnt);
                 
                 window.location.href =  `${redirectUrl}/send?token=${token}&user_identifier=${user_identifier}&amount=${amount}&bank=${provider}` || "";
                 setLoading(false)

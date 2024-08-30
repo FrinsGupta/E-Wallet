@@ -5,6 +5,7 @@ const OnRampTransactions = ({
   transactions,
 }: {
   transactions: {
+    id: string,
     time: Date;
     amount: number;
     // TODO: Can the type of `status` be more specific?
@@ -12,6 +13,8 @@ const OnRampTransactions = ({
     provider: string;
   }[];
 }) => {
+  // console.log(transactions);
+  
   if (!transactions.length) {
     return (
       <Card title="Recent Transactions">
@@ -22,8 +25,8 @@ const OnRampTransactions = ({
   return (
     <Card title="Recent Transactions">
       <div className="pt-2">
-        {transactions.map((t) => (
-          <div className="flex justify-between">
+        {transactions.map((t) => {
+         return <div key={t.id} className="flex justify-between">
             <div>
               <div className="text-sm">Received INR</div>
               <div className="text-slate-600 text-xs">
@@ -34,7 +37,7 @@ const OnRampTransactions = ({
               + Rs {t.amount}
             </div>
           </div>
-        ))}
+})}
       </div>
     </Card>
   );
