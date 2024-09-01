@@ -20,6 +20,13 @@ const getP2pTxns = async () => {
     where: {
       fromUserId: userId,
     },
+    include: {
+      toUser: {
+        select: {
+          name: true
+        }
+      }
+    }
   });
 
   return userTxns;
@@ -30,12 +37,14 @@ const page = async () => {
   //  console.log(txns);
 
   return (
-    <div className="w-full flex items-center justify-center h-[80vh]">
+    <div className="w-full flex  justify-center h-[80vh]">
     {/* <div className="grid grid-cols-1 gap-4 md:grid-cols-2 p-4"> */}
       <SendCard />
-      <div className="w-1/2">
-      <div className="w-[80%]">
-        <P2ptxns transactions={txns} receiver="iirigr" />
+      <div className="w-1/2 h-full">
+      <div className=" flex items-center justify-center h-full">
+        <div className="w-[80%]">
+        <P2ptxns transactions={txns} />
+        </div>
       </div>
       </div>
     </div>

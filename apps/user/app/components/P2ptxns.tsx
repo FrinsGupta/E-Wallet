@@ -3,15 +3,15 @@ import React from "react";
 
 const P2ptxns = ({
   transactions,
-  receiver,
 }: {
   transactions: {
     id: string,
-    timestamp: Date;
-    amount: number;
-    // TODO: Can the type of `status` be more specific
+    timestamp: Date,
+    amount: number,
+    toUser: {
+      name: string,
+    },
   }[];
-  receiver: string;
 }) => {
   if (!transactions.length) {
     return (
@@ -26,7 +26,7 @@ const P2ptxns = ({
         {transactions.map((t) => (
           <div key={t.id} className="flex justify-between my-1">
             <div>
-              <div className="text">Paid to {receiver}</div>
+              <div className="text">Paid to {t.toUser.name}</div>
               <div className="text-slate-600 text-sm">
                 {t.timestamp?.toDateString()}
               </div>
