@@ -12,10 +12,8 @@ import { signIn } from "next-auth/react";
 
 
 export default function () {
-    const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const [number, setNumber] = useState("");
     const [loading, setLoading] = useState(false)
     const BackendUrl = process.env.NEXTAUTH_URL
 
@@ -31,19 +29,12 @@ export default function () {
                 <SubHeading
                     subHeading={"Enter your information to create your account"}
                 />
-                {/* <InputBox type={"text"} label={"Name"} placeholder={"John Doe"} onChange={e=> setName(e.target.value)} /> */}
                 <InputBox
                     type={"text"}
                     label={"Email"}
                     placeholder={"johndoe@gmail.com"}
                     onChange={e=> setEmail(e.target.value)}
                 />
-                {/* <InputBox
-                    type={"text"}
-                    label={"Number"}
-                    placeholder={"+917091775353"}
-                    onChange={e=> setNumber(e.target.value)}
-                /> */}
                 <InputBox
                     type={"password"}
                     label={"Password"}
@@ -52,7 +43,6 @@ export default function () {
                 />
                 <Button btname={"Login"} onClick={async()=>{
                     setLoading(true)
-                        // const response = await axios.post(`${BackendUrl}/api/signup`,{
                        const res = await signIn("credentials",{
                            redirect: false,
                            email: email,

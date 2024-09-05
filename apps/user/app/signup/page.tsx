@@ -6,7 +6,7 @@ import Heading from "../components/Heading";
 import InputBox from "../components/InputBox";
 import Button from "../components/Button";
 import BottomWarning from "../components/BottomWarning";
-import { redirect, useRouter } from "next/navigation";
+import {  useRouter } from "next/navigation";
 import Loader from "@repo/ui/Loader"
 
 

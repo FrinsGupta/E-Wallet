@@ -18,7 +18,8 @@ const AppBar = () => {
         <Button btname={user ? "Logout" : "Login"} onClick={async()=>{
             if (user) {
               await signOut(); 
-               router.push('/api/auth/signin')
+              // router.push('/api/auth/signin')
+              signIn()
             } else {
                 signIn()
             }

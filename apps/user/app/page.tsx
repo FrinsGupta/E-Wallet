@@ -5,14 +5,16 @@ import { NEXT_AUTH } from "./lib/auth";
 export default async function  Home () {
   const session = await getServerSession(NEXT_AUTH)
   const user = session?.user
+
+  console.log(user);
   
-    if (user) {
-      redirect('/transfer')
-    }
-    else{
-      redirect('/api/auth/login')
-    }
   
+    if (!user) {
+      redirect('/api/auth/signin')
+    }else{
+      redirect('/transfer');
+    }
+
 }
 
  
