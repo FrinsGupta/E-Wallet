@@ -13,7 +13,12 @@ const BottomWarning = ({ warning, link }: BottomWarningType) => {
       <p className="underline ml-2 cursor-pointer">
         <button
           onClick={() => {
-            router.push("api/auth/signin");
+            if (link == "Login") {
+              router.push("signin");
+            }
+            else{
+              router.push("/signup")
+            }
           }}
           className=" underline"
         >
